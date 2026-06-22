@@ -1,7 +1,8 @@
 :root { --bg:#fbfbfd; --ink:#1d1d22; --muted:#6b6b76; --brand:#6c5ce7; --card:#fff; --line:#ececf1; --brand-ink:#ffffff; }
 :root[data-theme="dark"] { --bg:#16161c; --card:#1f1f27; --ink:#ececf1; --muted:#9a9aa6; --line:#2e2e3a; --brand:#8b7cf0; --brand-ink:#ffffff; }
 * { box-sizing: border-box; }
-body { margin:0; font-family:"Segoe UI",system-ui,sans-serif; background:var(--bg); color:var(--ink); transition:background-color .2s, color .2s; }
+html { background:var(--bg); }
+body { margin:0; min-height:100vh; font-family:"Segoe UI",system-ui,sans-serif; background:var(--bg); color:var(--ink); transition:background-color .2s, color .2s; }
 .nav { display:flex; justify-content:space-between; align-items:center; padding:18px 28px; max-width:1040px; margin:0 auto; }
 .controls { display:flex; gap:10px; align-items:center; }
 .theme-toggle { border:1px solid var(--line); background:transparent; border-radius:9px; padding:6px 10px; cursor:pointer; font-size:14px; line-height:1; }
