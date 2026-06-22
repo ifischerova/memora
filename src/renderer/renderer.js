@@ -112,7 +112,11 @@ document.getElementById('sortBtn').addEventListener('click', async () => {
   if (s.perFileErrors > 0) {
     html += `<span class="detail">${t('fileReadSkipped', { count: s.perFileErrors })}</span>`;
   }
-  setResult(s.perFileErrors > 0 ? 'warn' : 'ok', html);
+  if (s.moveDeleteFailed > 0) {
+    html += `<span class="detail">${t('moveDeleteFailed', { count: s.moveDeleteFailed })}</span>`;
+  }
+  const hasWarn = s.perFileErrors > 0 || s.moveDeleteFailed > 0;
+  setResult(hasWarn ? 'warn' : 'ok', html);
 });
 
 // initial paint

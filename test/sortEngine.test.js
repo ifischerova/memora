@@ -63,6 +63,7 @@ test('move empties the source', async () => {
   const { summary } = await runSort({ source: src, dest, mode: 'move' });
   assert.strictEqual(summary.moved, 1);
   assert.strictEqual(summary.sourceEmptied, true);
+  assert.strictEqual(summary.moveDeleteFailed, 0);
   assert.strictEqual(fs.readdirSync(src).length, 0);
 });
 

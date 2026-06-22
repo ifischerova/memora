@@ -73,7 +73,7 @@ async function runSort({ source, dest, mode, onProgress }) {
   const summary = {
     sorted: 0, skipped: 0, fallbackDate: 0,
     existingMonths: 0, newMonths: 0,
-    moved: 0, sourceEmptied: false, perFileErrors: 0,
+    moved: 0, sourceEmptied: false, perFileErrors: 0, moveDeleteFailed: 0,
   };
 
   let processed = 0;
@@ -97,7 +97,7 @@ async function runSort({ source, dest, mode, onProgress }) {
       } else {
         summary.skipped += 1;
       }
-      if (res.moveDeleteFailed) summary.perFileErrors += 1;
+      if (res.moveDeleteFailed) summary.moveDeleteFailed += 1;
     } catch (err) {
       const code = classifyFsError(err);
       if (code === 'diskFullMidway' || code === 'driveRemoved') {
