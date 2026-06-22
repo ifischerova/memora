@@ -89,3 +89,16 @@ test('preflight flags empty folder as noMedia', async () => {
   assert.strictEqual(r.ok, false);
   assert.strictEqual(r.code, 'noMedia');
 });
+
+test('preflight flags notEnoughSpace when copy needs more than free space', async () => {
+  media('a.jpg', '2024-03-10T12:00:00', 4);
+  const r = await preflight(src, dest, { statfs: async () => ({ bavail: 0, bsize: 1 }) });
+  assert.strictEqual(r.ok, false);
+  assert.strictEqual(r.code, 'notEnoughSpace');
+});
+
+test('preflight skips the space check for move', async () => {
+  media('a.jpg', '2024-03-10T12:00:00', 4);
+  const r = await preflight(src, dest, { mode: 'move', statfs: async () => ({ bavail: 0, bsize: 1 }) });
+  assert.strictEqual(r.ok, true);
+});

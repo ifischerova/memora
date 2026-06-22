@@ -20,6 +20,7 @@ function formatBytes(n) {
 
 async function preflight(source, dest, deps = {}) {
   const statfs = deps.statfs || ((p) => fs.statfs(p));
+  const mode = deps.mode;
   const base = await validatePaths(source, dest);
   if (!base.ok) return { ...base };
 
@@ -39,7 +40,8 @@ async function preflight(source, dest, deps = {}) {
     freeBytes = st.bavail * st.bsize;
   } catch { /* if statfs unavailable, skip the space gate */ }
 
-  if (totalBytes > freeBytes) {
+  // Move skips the free-space check: files are relocated, not duplicated.
+  if (mode !== 'move' && totalBytes > freeBytes) {
     return {
       ok: false, code: 'notEnoughSpace', warnings: base.warnings,
       needed: formatBytes(totalBytes), free: formatBytes(freeBytes),
@@ -98,12 +100,10 @@ async function runSort({ source, dest, mode, onProgress }) {
       if (res.moveDeleteFailed) summary.perFileErrors += 1;
     } catch (err) {
       const code = classifyFsError(err);
-      if (code === 'fileReadSkipped') {
-        summary.perFileErrors += 1;
-      } else if (code === 'diskFullMidway' || code === 'driveRemoved') {
+      if (code === 'diskFullMidway' || code === 'driveRemoved') {
         return { ok: false, error: { code, detail: err.message, processedBeforeError: summary.sorted } };
       } else {
-        // treat unexpected per-file issues as skippable read errors, keep going
+        // treat unexpected per-file issues as skippable errors, keep going
         summary.perFileErrors += 1;
       }
     }
