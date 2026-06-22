@@ -15,6 +15,32 @@
     "exifr": "^7.1.3"
   },
   "devDependencies": {
-    "electron": "^42.4.1"
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.ivafischerova.memora",
+    "productName": "Memora",
+    "directories": { "output": "dist" },
+    "files": [
+      "src/**/*",
+      "package.json",
+      "!**/*.test.js",
+      "!test/**"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "artifactName": "Memora-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Memora"
+    }
   }
 }
