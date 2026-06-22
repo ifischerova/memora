@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memora — Vaše vzpomínky v pořádku</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand"><span class="logo">M</span><strong>Memora</strong></div>
+    <div class="lang"><button data-lang="cs" class="active">CZ</button><button data-lang="en">EN</button></div>
+  </header>
+
+  <section class="hero">
+    <h1 data-i18n="heroTitle"></h1>
+    <p class="lead" data-i18n="heroLead"></p>
+    <a class="download" id="downloadBtn" href="#"><span data-i18n="download"></span></a>
+    <p class="sub" data-i18n="heroSub"></p>
+  </section>
+
+  <section class="steps">
+    <div class="step"><div class="num">1</div><h3 data-i18n="step1t"></h3><p data-i18n="step1d"></p></div>
+    <div class="step"><div class="num">2</div><h3 data-i18n="step2t"></h3><p data-i18n="step2d"></p></div>
+    <div class="step"><div class="num">3</div><h3 data-i18n="step3t"></h3><p data-i18n="step3d"></p></div>
+  </section>
+
+  <section class="features">
+    <div class="feat"><h4 data-i18n="f1t"></h4><p data-i18n="f1d"></p></div>
+    <div class="feat"><h4 data-i18n="f2t"></h4><p data-i18n="f2d"></p></div>
+    <div class="feat"><h4 data-i18n="f3t"></h4><p data-i18n="f3d"></p></div>
+    <div class="feat"><h4 data-i18n="f4t"></h4><p data-i18n="f4d"></p></div>
+  </section>
+
+  <footer class="foot">
+    <p>© 2026 Iva Fischerova · MIT License · <a id="repoLink" href="#">GitHub</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
