@@ -23,7 +23,7 @@ body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: va
   display: grid; place-items: center; font-weight: 700; font-size: 22px; }
 h1 { font-size: 22px; margin: 0; }
 .tagline { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
-.lang-toggle button { border: 1px solid var(--line); background: #fff; padding: 6px 12px; cursor: pointer;
+.lang-toggle button { border: 1px solid var(--line); background: var(--card); padding: 6px 12px; cursor: pointer;
   font-size: 13px; color: var(--muted); }
 .lang-toggle button:first-child { border-radius: 9px 0 0 9px; }
 .lang-toggle button:last-child { border-radius: 0 9px 9px 0; border-left: none; }
