@@ -10,5 +10,8 @@
     "start": "electron .",
     "test": "node --test",
     "build": "electron-builder"
+  },
+  "dependencies": {
+    "exifr": "^7.1.3"
   }
 }
