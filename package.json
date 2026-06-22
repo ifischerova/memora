@@ -32,15 +32,18 @@
       "target": [
         { "target": "nsis", "arch": ["x64"] },
         { "target": "portable", "arch": ["x64"] }
-      ],
-      "artifactName": "Memora-Setup-${version}.${ext}"
+      ]
     },
     "nsis": {
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "shortcutName": "Memora"
+      "shortcutName": "Memora",
+      "artifactName": "Memora-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Memora-Portable-${version}.${ext}"
     }
   }
 }
