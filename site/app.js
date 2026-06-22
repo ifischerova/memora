@@ -1,6 +1,6 @@
 'use strict';
 
-const GITHUB_REPO = 'iva-fischerova/memora'; // update if the GitHub username differs
+const GITHUB_REPO = 'ifischerova/memora'; // update if the GitHub username differs
 const INSTALLER_ASSET = 'Memora-Setup.exe';
 
 const I18N = {

@@ -8,8 +8,8 @@ metadata — locally, privately, bilingually (Czech / English).
 ## For users
 
 You don't need any of the below — just download the installer from the
-[releases page](https://github.com/iva-fischerova/memora/releases/latest) or the
-[promo site](https://iva-fischerova.github.io/memora/), run it, and follow
+[releases page](https://github.com/ifischerova/memora/releases/latest) or the
+[promo site](https://ifischerova.github.io/memora/), run it, and follow
 [the manual](MANUAL.md).
 
 ## Develop & build (Windows)
