@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="styles.css">
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">M</span>
+      <div>
+        <h1>Memora</h1>
+        <p class="tagline" data-msg="appTagline"></p>
+      </div>
+    </div>
+    <div class="lang-toggle" id="langToggle">
+      <button data-lang="cs" class="active">CZ</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </header>
+
+  <main class="card">
+    <div class="field">
+      <label data-msg="labelSource"></label>
+      <div class="picker">
+        <span class="path" id="sourcePath" data-msg="none"></span>
+        <button id="pickSource" data-msg="labelChoose"></button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label data-msg="labelDest"></label>
+      <div class="picker">
+        <span class="path" id="destPath" data-msg="none"></span>
+        <button id="pickDest" data-msg="labelChoose"></button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label data-msg="labelMode"></label>
+      <div class="modes">
+        <label class="radio"><input type="radio" name="mode" value="copy" checked> <span data-msg="labelCopy"></span></label>
+        <label class="radio"><input type="radio" name="mode" value="move"> <span data-msg="labelMove"></span></label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="checkBtn" class="secondary" data-msg="labelCheck"></button>
+      <button id="sortBtn" class="primary" data-msg="labelSort"></button>
+    </div>
+
+    <div class="status" id="status" hidden>
+      <div class="bar"><div class="fill" id="fill"></div></div>
+      <p class="status-text" id="statusText"></p>
+    </div>
+
+    <div class="result" id="result" hidden></div>
+  </main>
+
+  <script src="renderer.js"></script>
+</div>
