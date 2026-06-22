@@ -1,0 +1,14 @@
+{
+  "name": "memora",
+  "productName": "Memora",
+  "version": "0.1.0",
+  "description": "Sort your photos and videos into tidy year/month folders — locally and privately.",
+  "author": "Iva Fischerova <fischerova.ivka@gmail.com>",
+  "license": "MIT",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "build": "electron-builder"
+  }
+}
