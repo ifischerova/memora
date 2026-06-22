@@ -27,9 +27,22 @@ npm run build      # produce dist/Memora-Setup-<version>.exe (+ portable)
 
 1. Bump `version` in `package.json`.
 2. `npm run build` → artifacts appear in `dist/`.
-3. Create a GitHub Release and upload `dist/Memora-Setup-<version>.exe`.
+3. `npm run checksum` → copy the printed SHA-256 lines.
+4. Create a GitHub Release and upload `dist/Memora-Setup-<version>.exe`.
    Also upload a copy named `Memora-Setup.exe` so the promo site's
-   "latest" download link resolves.
+   "latest" download link resolves. Optionally upload the portable build.
+5. Paste the SHA-256 checksums into the release notes so users can verify
+   their download.
+
+### A note on code signing
+
+The installer is **not** signed with a paid certificate, so Windows SmartScreen
+shows a "Windows protected your PC" prompt on first run (users click
+**More info → Run anyway**). This is expected for a free, unsigned app and is
+documented for users in [the manual](MANUAL.md). To remove the warning later,
+options are a paid OV/EV code-signing certificate or
+[Azure Trusted Signing](https://learn.microsoft.com/azure/trusted-signing/);
+publishing via the Microsoft Store is another trusted distribution path.
 
 ## Project layout
 

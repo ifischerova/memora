@@ -9,7 +9,8 @@
   "scripts": {
     "start": "electron .",
     "test": "node --test",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "checksum": "node scripts/checksums.js"
   },
   "dependencies": {
     "exifr": "^7.1.3"

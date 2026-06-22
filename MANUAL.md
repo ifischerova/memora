@@ -21,6 +21,18 @@ read the phone directly.
 2. Double-click it and follow the installer.
 3. Launch Memora from the Start menu or desktop shortcut.
 
+### A Windows warning on first run is normal
+Memora is a small, free app and isn't signed with an expensive certificate, so
+the first time you run it Windows **SmartScreen** may show a blue
+"Windows protected your PC" screen. This is expected — it appears for any new
+app without a paid signing certificate, not because anything is wrong with
+Memora.
+
+To continue: click **More info**, then **Run anyway**. You only need to do this
+once. If you want to be extra careful, verify the download's **SHA-256 checksum**
+against the value published on the release page (it's listed in the release
+notes next to the files).
+
 ### 3. Sort your photos
 1. Switch the language to EN (top right) if you like.
 2. **Source folder** → *Choose…* → pick the folder with your photos.
@@ -58,6 +70,18 @@ z iCloudu / Google Fotek. Memora řadí složku — nečte telefon přímo.
 1. Stáhněte **Memora-Setup.exe** z webu nebo ze stránky GitHub releases.
 2. Dvakrát na něj klikněte a projděte instalací.
 3. Spusťte Memoru z nabídky Start nebo ze zástupce na ploše.
+
+### Varování Windows při prvním spuštění je normální
+Memora je malá bezplatná aplikace a není podepsaná drahým certifikátem, takže
+při prvním spuštění může Windows **SmartScreen** zobrazit modrou obrazovku
+„Windows ochránil váš počítač". Je to očekávané — objevuje se u každé nové
+aplikace bez placeného podpisového certifikátu, ne proto, že by s Memorou bylo
+něco v nepořádku.
+
+Pokračujte kliknutím na **Další informace** a poté **Přesto spustit**. Stačí to
+udělat jednou. Pokud chcete mít jistotu, ověřte **kontrolní součet SHA-256**
+staženého souboru proti hodnotě zveřejněné na stránce vydání (uvedené v
+poznámkách k vydání vedle souborů).
 
 ### 3. Seřaďte fotky
 1. Vpravo nahoře případně přepněte jazyk na CZ.
