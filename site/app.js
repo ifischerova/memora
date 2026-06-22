@@ -16,6 +16,7 @@ const I18N = {
     f2t: 'Slučuje knihovnu', f2d: 'Přidávejte fotky z WhatsAppu, screenshotů i fotoaparátu — vše se sloučí do jedné knihovny.',
     f3t: 'Bezpečné', f3d: 'Výchozí režim kopíruje — originály zůstanou nedotčené.',
     f4t: 'Dvojjazyčné', f4d: 'Čeština i angličtina, moderní přehledné prostředí.',
+    otherDownloads: 'macOS a další verze →',
   },
   en: {
     heroTitle: 'Your memories, in order.',
@@ -29,6 +30,7 @@ const I18N = {
     f2t: 'Builds one library', f2d: 'Add WhatsApp, screenshots, and camera photos — all merge into one library.',
     f3t: 'Safe', f3d: 'Copy is the default — your originals stay untouched.',
     f4t: 'Bilingual', f4d: 'Czech and English, in a clean modern interface.',
+    otherDownloads: 'macOS & other downloads →',
   },
 };
 
@@ -68,5 +70,6 @@ document.getElementById('themeToggle')?.addEventListener('click', () => {
 document.getElementById('downloadBtn').href =
   `https://github.com/${GITHUB_REPO}/releases/latest/download/${INSTALLER_ASSET}`;
 document.getElementById('repoLink').href = `https://github.com/${GITHUB_REPO}`;
+document.getElementById('releasesLink').href = 'https://github.com/' + GITHUB_REPO + '/releases/latest';
 
 apply('cs');

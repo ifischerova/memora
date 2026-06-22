@@ -5,6 +5,8 @@ metadata — locally, privately, bilingually (Czech / English).
 
 **Tagline:** Your memories, in order. / Vaše vzpomínky v pořádku.
 
+![Memora — sorting photos into year/month folders](site/screenshots/app-light.png)
+
 ## For users
 
 You don't need any of the below — just download the installer from the
@@ -15,6 +17,8 @@ You don't need any of the below — just download the installer from the
 ## Develop & build (Windows)
 
 Requirements: Node.js ≥ 20.
+
+> **macOS builds** are produced automatically by the release CI workflow (`.github/workflows/release.yml`) running on macOS runners. A `.dmg` cannot be built on Windows — push a `v*` tag to trigger the workflow and it will attach both `.exe` and `.dmg` to the GitHub Release.
 
 ```bash
 npm install        # install dependencies
