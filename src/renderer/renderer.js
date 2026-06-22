@@ -5,9 +5,9 @@ const t = (code, vars) => window.memora.t(code, state.lang, vars);
 
 function applyStaticText() {
   document.querySelectorAll('[data-msg]').forEach((el) => {
+    if (el.id === 'sourcePath' || el.id === 'destPath') return; // handled by renderPath below
     el.textContent = t(el.getAttribute('data-msg'));
   });
-  // re-render dynamic path labels (they use the "none" placeholder when empty)
   renderPath('sourcePath', state.source);
   renderPath('destPath', state.dest);
 }
@@ -81,13 +81,24 @@ document.getElementById('sortBtn').addEventListener('click', async () => {
   });
 
   const mode = currentMode();
-  const res = await window.memora.startSort(state.source, state.dest, mode);
-  unsub(); sortBtn.disabled = false;
-
+  let res;
+  try {
+    res = await window.memora.startSort(state.source, state.dest, mode);
+  } catch (err) {
+    unsub();
+    sortBtn.disabled = false;
+    status.hidden = true;
+    setResult('err', t('unknownError', { detail: String((err && err.message) || err) }));
+    return;
+  }
+  unsub();
+  sortBtn.disabled = false;
   if (!res.ok) {
+    status.hidden = true;
     setResult('err', t(res.error.code, { ...res.error, done: res.error.processedBeforeError }));
     return;
   }
+  status.hidden = true;
 
   const s = res.summary;
   const headline = s.isFresh
