@@ -9,7 +9,10 @@
 <body>
   <header class="nav">
     <div class="brand"><span class="logo">M</span><strong>Memora</strong></div>
-    <div class="lang"><button data-lang="cs" class="active">CZ</button><button data-lang="en">EN</button></div>
+    <div class="controls">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <div class="lang"><button data-lang="cs" class="active">CZ</button><button data-lang="en">EN</button></div>
+    </div>
   </header>
 
   <section class="hero">
@@ -17,6 +20,11 @@
     <p class="lead" data-i18n="heroLead"></p>
     <a class="download" id="downloadBtn" href="#"><span data-i18n="download"></span></a>
     <p class="sub" data-i18n="heroSub"></p>
+    <a class="releases-link" id="releasesLink" href="#" data-i18n="otherDownloads"></a>
+  </section>
+
+  <section class="showcase">
+    <img src="screenshots/app-light.png" alt="Memora app — sorting photos into year/month folders" />
   </section>
 
   <section class="steps">

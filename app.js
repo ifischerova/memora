@@ -16,6 +16,7 @@ const I18N = {
     f2t: 'Slučuje knihovnu', f2d: 'Přidávejte fotky z WhatsAppu, screenshotů i fotoaparátu — vše se sloučí do jedné knihovny.',
     f3t: 'Bezpečné', f3d: 'Výchozí režim kopíruje — originály zůstanou nedotčené.',
     f4t: 'Dvojjazyčné', f4d: 'Čeština i angličtina, moderní přehledné prostředí.',
+    otherDownloads: 'macOS a další verze →',
   },
   en: {
     heroTitle: 'Your memories, in order.',
@@ -29,6 +30,7 @@ const I18N = {
     f2t: 'Builds one library', f2d: 'Add WhatsApp, screenshots, and camera photos — all merge into one library.',
     f3t: 'Safe', f3d: 'Copy is the default — your originals stay untouched.',
     f4t: 'Bilingual', f4d: 'Czech and English, in a clean modern interface.',
+    otherDownloads: 'macOS & other downloads →',
   },
 };
 
@@ -45,8 +47,29 @@ document.querySelector('.lang').addEventListener('click', (e) => {
   const btn = e.target.closest('button'); if (btn) apply(btn.getAttribute('data-lang'));
 });
 
+// --- theme toggle ---
+(function initTheme() {
+  let theme;
+  try { theme = localStorage.getItem('memora-theme'); } catch (e) { theme = null; }
+  if (theme !== 'dark' && theme !== 'light') {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', theme);
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+})();
+
+document.getElementById('themeToggle')?.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
+  try { localStorage.setItem('memora-theme', next); } catch (e) {}
+});
+
 document.getElementById('downloadBtn').href =
   `https://github.com/${GITHUB_REPO}/releases/latest/download/${INSTALLER_ASSET}`;
 document.getElementById('repoLink').href = `https://github.com/${GITHUB_REPO}`;
+document.getElementById('releasesLink').href = 'https://github.com/' + GITHUB_REPO + '/releases/latest';
 
 apply('cs');
