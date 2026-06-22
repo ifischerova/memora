@@ -31,6 +31,26 @@ function currentMode() {
   return document.querySelector('input[name="mode"]:checked').value;
 }
 
+// --- theme toggle ---
+(function initTheme() {
+  let theme;
+  try { theme = localStorage.getItem('memora-theme'); } catch (e) { theme = null; }
+  if (theme !== 'dark' && theme !== 'light') {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', theme);
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+})();
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
+  try { localStorage.setItem('memora-theme', next); } catch (e) {}
+});
+
 // --- language toggle ---
 document.getElementById('langToggle').addEventListener('click', (e) => {
   const btn = e.target.closest('button'); if (!btn) return;
