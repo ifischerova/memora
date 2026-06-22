@@ -33,9 +33,13 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.handle('pick-folder', async () => {
-  const result = await dialog.showOpenDialog({ properties: ['openDirectory'] });
-  if (result.canceled || result.filePaths.length === 0) return null;
-  return result.filePaths[0];
+  try {
+    const result = await dialog.showOpenDialog({ properties: ['openDirectory'] });
+    if (result.canceled || result.filePaths.length === 0) return null;
+    return result.filePaths[0];
+  } catch {
+    return null;
+  }
 });
 
 ipcMain.handle('preflight', async (_event, { source, dest, mode }) => {
