@@ -1,7 +1,7 @@
 {
   "name": "memora",
   "productName": "Memora",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sort your photos and videos into tidy year/month folders — locally and privately.",
   "author": "Iva Fischerova <fischerova.ivka@gmail.com>",
   "license": "MIT",
@@ -22,7 +22,9 @@
   "build": {
     "appId": "com.ivafischerova.memora",
     "productName": "Memora",
-    "directories": { "output": "dist" },
+    "directories": {
+      "output": "dist"
+    },
     "files": [
       "src/**/*",
       "package.json",
@@ -31,8 +33,18 @@
     ],
     "win": {
       "target": [
-        { "target": "nsis", "arch": ["x64"] },
-        { "target": "portable", "arch": ["x64"] }
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
       ]
     },
     "nsis": {
@@ -48,15 +60,31 @@
     },
     "mac": {
       "target": [
-        { "target": "dmg", "arch": ["arm64", "x64"] }
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
       ],
       "category": "public.app-category.photography",
       "artifactName": "Memora-${version}-mac-${arch}.${ext}"
     },
     "linux": {
       "target": [
-        { "target": "deb", "arch": ["x64"] },
-        { "target": "AppImage", "arch": ["x64"] }
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
       ],
       "category": "Graphics",
       "synopsis": "Sort your photos and videos into tidy year/month folders.",
