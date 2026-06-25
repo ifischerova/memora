@@ -6,9 +6,6 @@ const I18N = {
   cs: {
     heroTitle: 'Vaše vzpomínky popořadě.',
     heroLead: 'Memora seřadí tisíce fotek a videí z telefonu do přehledných složek podle roku a měsíce — rychle, lokálně a soukromě.',
-    dlWinKind: 'Instalátor .exe',
-    dlMacKind: '.dmg · Intel i Apple Silicon',
-    dlDebKind: 'balíček .deb',
     dlAppImageKind: 'AppImage · ostatní distribuce',
     heroSub: 'Zdarma · MIT licence · Vše probíhá ve vašem počítači',
     step1t: '1. Stáhněte fotky', step1d: 'Přeneste fotky z telefonu do složky (kabelem nebo z cloudu).',
@@ -23,9 +20,6 @@ const I18N = {
   en: {
     heroTitle: 'Your memories, in order.',
     heroLead: 'Memora sorts thousands of phone photos and videos into tidy year/month folders — fast, local, and private.',
-    dlWinKind: '.exe installer',
-    dlMacKind: '.dmg · Intel & Apple Silicon',
-    dlDebKind: '.deb package',
     dlAppImageKind: 'AppImage · other distros',
     heroSub: 'Free · MIT license · Everything runs on your computer',
     step1t: '1. Get your photos', step1d: 'Copy photos from your phone to a folder (cable or cloud download).',
