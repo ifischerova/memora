@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Memora — Vaše vzpomínky v pořádku</title>
+  <title>Memora — Vaše vzpomínky popořadě</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,7 +18,24 @@
   <section class="hero">
     <h1 data-i18n="heroTitle"></h1>
     <p class="lead" data-i18n="heroLead"></p>
-    <a class="download" id="downloadBtn" href="#"><span data-i18n="download"></span></a>
+    <div class="downloads">
+      <a class="dl-btn primary" id="dlWin" href="#">
+        <span class="dl-os">🪟 Windows</span>
+        <span class="dl-kind" data-i18n="dlWinKind"></span>
+      </a>
+      <a class="dl-btn" id="dlMac" href="#">
+        <span class="dl-os">🍎 macOS</span>
+        <span class="dl-kind" data-i18n="dlMacKind"></span>
+      </a>
+      <a class="dl-btn" id="dlDeb" href="#">
+        <span class="dl-os">🐧 Debian / Ubuntu</span>
+        <span class="dl-kind" data-i18n="dlDebKind"></span>
+      </a>
+      <a class="dl-btn" id="dlAppImage" href="#">
+        <span class="dl-os">🐧 Linux</span>
+        <span class="dl-kind" data-i18n="dlAppImageKind"></span>
+      </a>
+    </div>
     <p class="sub" data-i18n="heroSub"></p>
     <a class="releases-link" id="releasesLink" href="#" data-i18n="otherDownloads"></a>
   </section>
