@@ -3,7 +3,7 @@
 Sort thousands of photos and videos into tidy `YYYY/YYYY-MM` folders by their
 metadata — locally, privately, bilingually (Czech / English).
 
-**Tagline:** Your memories, in order. / Vaše vzpomínky v pořádku.
+**Tagline:** Your memories, in order. / Vaše vzpomínky popořadě.
 
 ![Memora — sorting photos into year/month folders](site/screenshots/app-light.png)
 
@@ -18,7 +18,7 @@ You don't need any of the below — just download the installer from the
 
 Requirements: Node.js ≥ 20.
 
-> **macOS builds** are produced automatically by the release CI workflow (`.github/workflows/release.yml`) running on macOS runners. A `.dmg` cannot be built on Windows — push a `v*` tag to trigger the workflow and it will attach both `.exe` and `.dmg` to the GitHub Release.
+> **macOS and Linux builds** are produced automatically by the release CI workflow (`.github/workflows/release.yml`), which runs on Windows, macOS, and Ubuntu runners in parallel. A `.dmg`, `.deb`, or `AppImage` cannot be built on Windows — push a `v*` tag to trigger the workflow and it attaches the `.exe`, `.dmg`, `.deb`, and `.AppImage` to the GitHub Release. The Linux `.deb` installs on Debian, Ubuntu, and Mint; the `AppImage` runs on virtually any distribution (Fedora, Arch, openSUSE, …) without installation.
 
 ```bash
 npm install        # install dependencies
@@ -37,6 +37,14 @@ npm run build      # produce dist/Memora-Setup-<version>.exe (+ portable)
    "latest" download link resolves. Optionally upload the portable build.
 5. Paste the SHA-256 checksums into the release notes so users can verify
    their download.
+
+> The easiest path is to **push a `v*` tag** instead of building by hand: the
+> CI builds all platforms and attaches the artifacts to the Release
+> automatically. It also adds versionless copies — `Memora-Setup.exe`,
+> `Memora.deb`, `Memora.AppImage` — that the promo site's Windows and Linux
+> download buttons link to. The macOS button points at the release page instead,
+> because the `.dmg` ships as separate Intel (`x64`) and Apple Silicon (`arm64`)
+> builds.
 
 ### A note on code signing
 

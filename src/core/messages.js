@@ -90,7 +90,7 @@ const MESSAGES = {
   },
 
   // --- static UI labels ---
-  appTagline: { en: 'Your memories, in order.', cs: 'Vaše vzpomínky v pořádku.' },
+  appTagline: { en: 'Your memories, in order.', cs: 'Vaše vzpomínky popořadě.' },
   labelSource: { en: 'Source folder', cs: 'Zdrojová složka' },
   labelDest: { en: 'Destination folder', cs: 'Cílová složka' },
   labelChoose: { en: 'Choose…', cs: 'Vybrat…' },

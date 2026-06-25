@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-latest]
+        os: [windows-latest, macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +27,12 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: Copy-Item (Get-ChildItem dist/Memora-Setup-*.exe | Select-Object -First 1).FullName dist/Memora-Setup.exe
+      - name: Create versionless package copies (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          cp "$(ls dist/Memora-*-linux-*.deb | head -n1)" dist/Memora.deb
+          cp "$(ls dist/Memora-*-linux-*.AppImage | head -n1)" dist/Memora.AppImage
       - name: Attach artifacts to release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
@@ -34,3 +40,5 @@ jobs:
           files: |
             dist/*.exe
             dist/*.dmg
+            dist/*.deb
+            dist/*.AppImage

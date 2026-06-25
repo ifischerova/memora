@@ -246,7 +246,7 @@ files:
 ## Branding
 
 - **Name:** Memora.
-- **Tagline:** "Your memories, in order." / "Vaše vzpomínky v pořádku."
+- **Tagline:** "Your memories, in order." / "Vaše vzpomínky popořadě."
 - **Identity:** modern, light, warm. Shared between app and promo site.
 
 ## Distribution

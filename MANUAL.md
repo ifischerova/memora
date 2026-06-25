@@ -33,6 +33,15 @@ once. If you want to be extra careful, verify the download's **SHA-256 checksum*
 against the value published on the release page (it's listed in the release
 notes next to the files).
 
+### On macOS and Linux
+Memora also runs on macOS and Linux:
+- **macOS:** download the `.dmg` for your chip (Apple Silicon or Intel) from the
+  releases page, open it, and drag Memora to Applications.
+- **Linux (Debian / Ubuntu / Mint):** download `Memora.deb` and install it with
+  `sudo dpkg -i Memora.deb`, or double-click it in your software centre.
+- **Linux (other distributions):** download `Memora.AppImage`, make it
+  executable (`chmod +x Memora.AppImage`), and run it — no installation needed.
+
 ### 3. Sort your photos
 1. Switch the language to EN (top right) if you like.
 2. **Source folder** → *Choose…* → pick the folder with your photos.
@@ -82,6 +91,15 @@ Pokračujte kliknutím na **Další informace** a poté **Přesto spustit**. Sta
 udělat jednou. Pokud chcete mít jistotu, ověřte **kontrolní součet SHA-256**
 staženého souboru proti hodnotě zveřejněné na stránce vydání (uvedené v
 poznámkách k vydání vedle souborů).
+
+### Na macOS a Linuxu
+Memora běží i na macOS a Linuxu:
+- **macOS:** ze stránky vydání stáhněte `.dmg` pro svůj procesor (Apple Silicon
+  nebo Intel), otevřete jej a přetáhněte Memoru do složky Aplikace.
+- **Linux (Debian / Ubuntu / Mint):** stáhněte `Memora.deb` a nainstalujte jej
+  příkazem `sudo dpkg -i Memora.deb`, nebo na něj dvakrát klikněte v centru softwaru.
+- **Linux (ostatní distribuce):** stáhněte `Memora.AppImage`, nastavte mu právo
+  ke spuštění (`chmod +x Memora.AppImage`) a spusťte jej — bez instalace.
 
 ### 3. Seřaďte fotky
 1. Vpravo nahoře případně přepněte jazyk na CZ.

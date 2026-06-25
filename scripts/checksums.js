@@ -10,16 +10,21 @@ const crypto = require('node:crypto');
 
 const distDir = path.join(__dirname, '..', 'dist');
 
+// Installer/package artifacts across all platforms.
+const ARTIFACT_EXTS = ['.exe', '.dmg', '.deb', '.appimage'];
+
 let files;
 try {
-  files = fs.readdirSync(distDir).filter((f) => f.toLowerCase().endsWith('.exe'));
+  files = fs
+    .readdirSync(distDir)
+    .filter((f) => ARTIFACT_EXTS.some((ext) => f.toLowerCase().endsWith(ext)));
 } catch {
   console.error('No dist/ folder found. Run "npm run build" first.');
   process.exit(1);
 }
 
 if (files.length === 0) {
-  console.error('No .exe files in dist/. Run "npm run build" first.');
+  console.error('No installer artifacts in dist/. Run "npm run build" first.');
   process.exit(1);
 }
 

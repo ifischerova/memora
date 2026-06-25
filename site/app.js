@@ -1,13 +1,15 @@
 'use strict';
 
 const GITHUB_REPO = 'ifischerova/memora'; // update if the GitHub username differs
-const INSTALLER_ASSET = 'Memora-Setup.exe';
 
 const I18N = {
   cs: {
-    heroTitle: 'Vaše vzpomínky v pořádku.',
+    heroTitle: 'Vaše vzpomínky popořadě.',
     heroLead: 'Memora seřadí tisíce fotek a videí z telefonu do přehledných složek podle roku a měsíce — rychle, lokálně a soukromě.',
-    download: 'Stáhnout pro Windows',
+    dlWinKind: 'Instalátor .exe',
+    dlMacKind: '.dmg · Intel i Apple Silicon',
+    dlDebKind: 'balíček .deb',
+    dlAppImageKind: 'AppImage · ostatní distribuce',
     heroSub: 'Zdarma · MIT licence · Vše probíhá ve vašem počítači',
     step1t: '1. Stáhněte fotky', step1d: 'Přeneste fotky z telefonu do složky (kabelem nebo z cloudu).',
     step2t: '2. Vyberte složky', step2d: 'V Memoře zvolte zdrojovou a cílovou složku a klikněte na Seřadit.',
@@ -16,12 +18,15 @@ const I18N = {
     f2t: 'Slučuje knihovnu', f2d: 'Přidávejte fotky z WhatsAppu, screenshotů i fotoaparátu — vše se sloučí do jedné knihovny.',
     f3t: 'Bezpečné', f3d: 'Výchozí režim kopíruje — originály zůstanou nedotčené.',
     f4t: 'Dvojjazyčné', f4d: 'Čeština i angličtina, moderní přehledné prostředí.',
-    otherDownloads: 'macOS a další verze →',
+    otherDownloads: 'Všechna vydání a kontrolní součty →',
   },
   en: {
     heroTitle: 'Your memories, in order.',
     heroLead: 'Memora sorts thousands of phone photos and videos into tidy year/month folders — fast, local, and private.',
-    download: 'Download for Windows',
+    dlWinKind: '.exe installer',
+    dlMacKind: '.dmg · Intel & Apple Silicon',
+    dlDebKind: '.deb package',
+    dlAppImageKind: 'AppImage · other distros',
     heroSub: 'Free · MIT license · Everything runs on your computer',
     step1t: '1. Get your photos', step1d: 'Copy photos from your phone to a folder (cable or cloud download).',
     step2t: '2. Pick folders', step2d: 'In Memora choose a source and destination folder, then click Sort.',
@@ -30,7 +35,7 @@ const I18N = {
     f2t: 'Builds one library', f2d: 'Add WhatsApp, screenshots, and camera photos — all merge into one library.',
     f3t: 'Safe', f3d: 'Copy is the default — your originals stay untouched.',
     f4t: 'Bilingual', f4d: 'Czech and English, in a clean modern interface.',
-    otherDownloads: 'macOS & other downloads →',
+    otherDownloads: 'All releases & checksums →',
   },
 };
 
@@ -67,9 +72,17 @@ document.getElementById('themeToggle')?.addEventListener('click', () => {
   try { localStorage.setItem('memora-theme', next); } catch (e) {}
 });
 
-document.getElementById('downloadBtn').href =
-  `https://github.com/${GITHUB_REPO}/releases/latest/download/${INSTALLER_ASSET}`;
-document.getElementById('repoLink').href = `https://github.com/${GITHUB_REPO}`;
-document.getElementById('releasesLink').href = 'https://github.com/' + GITHUB_REPO + '/releases/latest';
+const REPO_URL = `https://github.com/${GITHUB_REPO}`;
+const LATEST_URL = `${REPO_URL}/releases/latest`;
+const DOWNLOAD_URL = `${LATEST_URL}/download`;
+
+// Direct downloads use versionless asset names the release CI creates.
+document.getElementById('dlWin').href = `${DOWNLOAD_URL}/Memora-Setup.exe`;
+document.getElementById('dlDeb').href = `${DOWNLOAD_URL}/Memora.deb`;
+document.getElementById('dlAppImage').href = `${DOWNLOAD_URL}/Memora.AppImage`;
+// macOS ships two architectures — send users to the release page to pick theirs.
+document.getElementById('dlMac').href = LATEST_URL;
+document.getElementById('repoLink').href = REPO_URL;
+document.getElementById('releasesLink').href = LATEST_URL;
 
 apply('cs');

@@ -14,9 +14,15 @@ body { margin:0; min-height:100vh; font-family:"Segoe UI",system-ui,sans-serif; 
 .hero { text-align:center; padding:72px 24px 56px; max-width:780px; margin:0 auto; }
 .hero h1 { font-size:44px; line-height:1.1; margin:0 0 16px; }
 .lead { font-size:19px; color:var(--muted); margin:0 0 32px; }
-.download { display:inline-block; background:var(--brand); color:#fff; text-decoration:none; font-weight:600;
-  padding:15px 30px; border-radius:12px; font-size:17px; }
-.download:hover { filter:brightness(1.05); }
+.downloads { display:flex; flex-wrap:wrap; justify-content:center; align-items:stretch; gap:12px; margin:0 0 4px; }
+.dl-btn { display:flex; flex-direction:column; justify-content:center; gap:3px; min-width:160px;
+  text-decoration:none; border:1px solid var(--brand); color:var(--brand); background:var(--card);
+  padding:13px 22px; border-radius:12px; transition:filter .15s, background-color .15s; }
+.dl-btn .dl-os { font-size:16px; font-weight:600; }
+.dl-btn .dl-kind { font-size:12px; font-weight:500; color:var(--muted); }
+.dl-btn:hover { filter:brightness(1.04); }
+.dl-btn.primary { background:var(--brand); color:var(--brand-ink); border-color:var(--brand); }
+.dl-btn.primary .dl-kind { color:rgba(255,255,255,.85); }
 .sub { color:var(--muted); font-size:13px; margin-top:14px; }
 .releases-link { display:inline-block; color:var(--brand); font-size:13px; margin-top:8px; text-decoration:none; }
 .releases-link:hover { text-decoration:underline; }
@@ -31,4 +37,5 @@ body { margin:0; min-height:100vh; font-family:"Segoe UI",system-ui,sans-serif; 
 .feat h4 { margin:0 0 6px; font-size:16px; } .feat p { margin:0; color:var(--muted); font-size:14px; line-height:1.5; }
 .foot { text-align:center; padding:30px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
 .foot a { color:var(--brand); }
-@media (max-width:760px){ .steps,.features{ grid-template-columns:1fr; } .hero h1{ font-size:34px; } }
+@media (max-width:760px){ .steps,.features{ grid-template-columns:1fr; } .hero h1{ font-size:34px; }
+  .downloads{ flex-direction:column; align-items:stretch; } .dl-btn{ width:100%; } }
