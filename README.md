@@ -44,17 +44,39 @@ npm run build      # produce dist/Memora-Setup-<version>.exe (+ portable)
 > `Memora.deb`, `Memora.AppImage` — that the promo site's Windows and Linux
 > download buttons link to. The macOS button points at the release page instead,
 > because the `.dmg` ships as separate Intel (`x64`) and Apple Silicon (`arm64`)
-> builds.
+> builds. The CI also generates and attaches `SHA256SUMS-<OS>.txt` for every
+> platform, so users can verify their download with `sha256sum -c` (Linux/macOS)
+> or `Get-FileHash` (Windows) — no manual checksum step required.
 
 ### A note on code signing
 
-The installer is **not** signed with a paid certificate, so Windows SmartScreen
-shows a "Windows protected your PC" prompt on first run (users click
-**More info → Run anyway**). This is expected for a free, unsigned app and is
-documented for users in [the manual](MANUAL.md). To remove the warning later,
-options are a paid OV/EV code-signing certificate or
-[Azure Trusted Signing](https://learn.microsoft.com/azure/trusted-signing/);
-publishing via the Microsoft Store is another trusted distribution path.
+The installer is **not** code-signed, so Windows SmartScreen shows a "Windows
+protected your PC" prompt on first run (users click **More info → Run anyway**),
+and macOS Gatekeeper requires a right-click → **Open** the first time. This is
+expected for an unsigned app and is documented for users in
+[the manual](MANUAL.md). Until the app is signed, the published
+`SHA256SUMS-<OS>.txt` files are the way for users to verify a download is intact
+and matches what CI built.
+
+**Free / low-cost signing options (no paid OV/EV cert):**
+
+- **Windows — [SignPath Foundation](https://about.signpath.io/product/open-source)**:
+  free code-signing certificates for open-source projects, integrable into the
+  release CI. This is the main genuinely-free path that satisfies SmartScreen.
+- **Windows — [Azure Trusted Signing](https://learn.microsoft.com/azure/trusted-signing/)**:
+  very cheap (~$10/month) rather than free, and needs a verified identity, but
+  far cheaper than a traditional OV/EV certificate.
+- **Windows — self-signed certificate**: free but does **not** help SmartScreen
+  (users would have to manually install/trust the cert), so it isn't useful for
+  public distribution.
+- **macOS**: Developer ID signing + notarization requires the Apple Developer
+  Program (**$99/year**) — there is no free notarization path. Unsigned `.dmg`
+  builds still run via right-click → Open.
+- **Linux**: `.deb` and `AppImage` can be **GPG-signed for free** with your own
+  key; publish the public key so users can verify. Checksums + GitHub Releases
+  are the common baseline and are already in place.
+
+The Microsoft Store is another trusted distribution path for Windows.
 
 ## Project layout
 

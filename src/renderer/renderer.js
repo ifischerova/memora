@@ -1,7 +1,7 @@
 'use strict';
 
 const state = { lang: 'cs', source: null, dest: null };
-const t = (code, vars) => window.memora.t(code, state.lang, vars);
+const t = (code, vars) => window.MemoraMessages.formatMessage(code, state.lang, vars);
 
 function applyStaticText() {
   document.querySelectorAll('[data-msg]').forEach((el) => {
@@ -18,10 +18,19 @@ function renderPath(id, value) {
   else { el.textContent = t('none'); el.classList.add('empty'); }
 }
 
-function setResult(kind, html) {
+// Render a result without ever interpreting strings as HTML. `message` is the
+// headline; `details` is an optional list of secondary lines (rendered as the
+// .detail spans the stylesheet expects).
+function setResult(kind, message, details = []) {
   const box = document.getElementById('result');
   box.className = `result ${kind}`;
-  box.innerHTML = html;
+  box.textContent = message; // clears prior children, sets headline text node
+  for (const line of details) {
+    const span = document.createElement('span');
+    span.className = 'detail';
+    span.textContent = line;
+    box.appendChild(span);
+  }
   box.hidden = false;
 }
 
@@ -75,11 +84,11 @@ document.getElementById('checkBtn').addEventListener('click', async () => {
   clearResult();
   const r = await window.memora.preflight(state.source, state.dest, currentMode());
   if (!r.ok) { setResult('err', t(r.code, r)); return; }
-  let html = t('preflightReady', { photos: r.photos, videos: r.videos, size: r.size });
+  const details = [];
   if (r.warnings && r.warnings.includes('destInsideSource')) {
-    html += `<span class="detail">${t('destInsideSource')}</span>`;
+    details.push(t('destInsideSource'));
   }
-  setResult('ok', html);
+  setResult('ok', t('preflightReady', { photos: r.photos, videos: r.videos, size: r.size }), details);
 });
 
 // --- sort ---
@@ -124,19 +133,18 @@ document.getElementById('sortBtn').addEventListener('click', async () => {
   const headline = s.isFresh
     ? t('doneFresh', s)
     : t('doneMerged', s);
-  let html = headline;
-  html += `<span class="detail">${t('doneDetail', s)}</span>`;
+  const details = [t('doneDetail', s)];
   if (mode === 'move' && s.sourceEmptied) {
-    html += `<span class="detail">${t('sourceEmptied')}</span>`;
+    details.push(t('sourceEmptied'));
   }
   if (s.perFileErrors > 0) {
-    html += `<span class="detail">${t('fileReadSkipped', { count: s.perFileErrors })}</span>`;
+    details.push(t('fileReadSkipped', { count: s.perFileErrors }));
   }
   if (s.moveDeleteFailed > 0) {
-    html += `<span class="detail">${t('moveDeleteFailed', { count: s.moveDeleteFailed })}</span>`;
+    details.push(t('moveDeleteFailed', { count: s.moveDeleteFailed }));
   }
   const hasWarn = s.perFileErrors > 0 || s.moveDeleteFailed > 0;
-  setResult(hasWarn ? 'warn' : 'ok', html);
+  setResult(hasWarn ? 'warn' : 'ok', headline, details);
 });
 
 // initial paint

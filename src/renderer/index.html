@@ -1,4 +1,12 @@
-<link rel="stylesheet" href="styles.css">
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 <div class="app">
   <header class="topbar">
     <div class="brand">
@@ -55,5 +63,8 @@
     <div class="result" id="result" hidden></div>
   </main>
 
-  <script src="renderer.js"></script>
 </div>
+<script src="../core/messages.js"></script>
+<script src="renderer.js"></script>
+</body>
+</html>

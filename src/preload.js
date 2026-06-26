@@ -1,6 +1,9 @@
 'use strict';
+// With sandbox:true a preload script may only require 'electron' and a small
+// allowlist of Node modules — it can no longer require local files. Translation
+// therefore lives entirely in the renderer (see ../core/messages.js, loaded as a
+// plain script in index.html), and this bridge only forwards IPC.
 const { contextBridge, ipcRenderer } = require('electron');
-const { formatMessage } = require('./core/messages');
 
 contextBridge.exposeInMainWorld('memora', {
   pickFolder: () => ipcRenderer.invoke('pick-folder'),
@@ -11,5 +14,4 @@ contextBridge.exposeInMainWorld('memora', {
     ipcRenderer.on('sort:progress', handler);
     return () => ipcRenderer.removeListener('sort:progress', handler);
   },
-  t: (code, lang, vars) => formatMessage(code, lang, vars),
 });

@@ -2,6 +2,18 @@
 
 // Single source of truth for every user-facing string (validation, errors,
 // success, and static UI labels). Keys are stable "codes"; values are {en, cs}.
+//
+// UMD-style export: this file is consumed both as a CommonJS module (Node tests
+// and the Electron main process) and as a plain <script> in the sandboxed
+// renderer, where it exposes `globalThis.MemoraMessages`.
+(function (root, factory) {
+  const api = factory();
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = api;
+  } else {
+    root.MemoraMessages = api;
+  }
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
 const MESSAGES = {
   // --- pre-flight validation ---
   noSource: {
@@ -112,4 +124,5 @@ function formatMessage(code, lang, vars = {}) {
   );
 }
 
-module.exports = { MESSAGES, formatMessage };
+return { MESSAGES, formatMessage };
+});
